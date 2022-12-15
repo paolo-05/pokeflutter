@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../utils/palette.dart';
+import 'styled_text.dart';
 
 class RandomFloatingButton extends StatelessWidget {
   const RandomFloatingButton({super.key});
@@ -15,9 +16,10 @@ class RandomFloatingButton extends StatelessWidget {
         Icons.auto_awesome,
         color: gray[500],
       ),
-      label: Text(
-        "Random",
-        style: Theme.of(context).textTheme.labelLarge,
+      label: StyledText(
+        text: "Random",
+        style: Theme.of(context).textTheme.labelLarge!,
+        textHeight: 20,
       ),
       onPressed: () {
         print("Random button pressed!");
