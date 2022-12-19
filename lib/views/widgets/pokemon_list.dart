@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import '../../model/pokemon_list_item.dart';
 
 class PokemonList extends StatelessWidget {
-  const PokemonList({super.key});
+  final List<PokemonListItem> pokemonList;
+  const PokemonList({super.key, required this.pokemonList});
 
   @override
   Widget build(BuildContext context) {
@@ -9,7 +11,7 @@ class PokemonList extends StatelessWidget {
       height: 532,
       padding: EdgeInsets.symmetric(horizontal: 24),
       child: GridView.builder(
-          itemCount: 20,
+          itemCount: pokemonList.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: 8,
@@ -19,7 +21,7 @@ class PokemonList extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return Container(
                 decoration: BoxDecoration(color: Colors.blue),
-                child: Text("Flutter"));
+                child: Text(pokemonList[index].name));
           }),
     );
   }
