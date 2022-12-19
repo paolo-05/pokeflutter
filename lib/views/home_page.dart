@@ -10,25 +10,36 @@ import 'widgets/random_floating_button.dart';
 import 'widgets/bottom_nav_bar.dart';
 import 'widgets/styled_text.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final List<PokemonListItem> pokemonList = [];
+
+  @override
+  void initState() {
+    readJsonFile();
+    super.initState();
+  }
+
+  void readJsonFile() async {
+    final jsonFile = await rootBundle.loadString("assets/pokemonList.json");
+    final decoded = jsonDecode(jsonFile);
+    for (var item in decoded["pokemonList"]) {
+      final pokemonListItem =
+          PokemonListItem(name: item["name"], url: item["url"]);
+      pokemonList.add(pokemonListItem);
+    }
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final List<PokemonListItem> pokemonList = [];
-
-    void readJsonFile() async {
-      final jsonFile = await rootBundle.loadString("assets/pokemonList.json");
-      final decoded = jsonDecode(jsonFile);
-      for (var item in decoded["pokemonList"]) {
-        final pokemonListItem =
-            PokemonListItem(name: item["name"], url: item["url"]);
-        pokemonList.add(pokemonListItem);
-      }
-    }
-
-    readJsonFile();
 
     return Scaffold(
       floatingActionButton: const RandomFloatingButton(),
