@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../utils/palette.dart';
 import 'styled_text.dart';
@@ -10,7 +11,7 @@ class RandomFloatingButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton.extended(
       backgroundColor: const Color(0xFFFFCC00),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
       elevation: 0,
       icon: Icon(
         Icons.auto_awesome,
@@ -19,7 +20,7 @@ class RandomFloatingButton extends StatelessWidget {
       label: StyledText(
         text: "Random",
         style: Theme.of(context).textTheme.labelLarge!,
-        textHeight: 20,
+        textHeight: 20.h,
       ),
       onPressed: () {
         print("Random button pressed!");

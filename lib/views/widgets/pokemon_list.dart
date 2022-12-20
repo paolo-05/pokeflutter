@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../model/pokemon_list_item.dart';
 
 class PokemonList extends StatelessWidget {
@@ -7,16 +9,18 @@ class PokemonList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final deviceSize = MediaQuery.of(context).size;
+
     return Container(
-      height: 532,
-      padding: EdgeInsets.symmetric(horizontal: 24),
+      height: 532.h,
+      padding: EdgeInsets.symmetric(horizontal: 24.w),
       child: GridView.builder(
           itemCount: pokemonList.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            crossAxisSpacing: 8,
-            mainAxisSpacing: 8,
-            mainAxisExtent: 100,
+            crossAxisSpacing: 8.r,
+            mainAxisSpacing: 8.r,
+            mainAxisExtent: 100.h,
           ),
           itemBuilder: (BuildContext context, int index) {
             return Container(
