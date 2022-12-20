@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'widgets/search_bar.dart';
 import '../model/pokemon_list_item.dart';
 import '../utils/palette.dart';
 import 'widgets/pokemon_list.dart';
@@ -60,6 +61,13 @@ class _HomePageState extends State<HomePage> {
             style: textTheme.bodyLarge
                 ?.copyWith(color: gray[400], height: 24 / 16),
           ),
+        ),
+        SizedBox(
+          height: 16,
+        ),
+        SearchBar(),
+        SizedBox(
+          height: 24,
         ),
         PokemonList(
           pokemonList: pokemonList,
