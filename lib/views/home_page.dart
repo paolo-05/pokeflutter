@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'widgets/search_bar.dart';
 import '../model/pokemon_list_item.dart';
@@ -48,26 +49,26 @@ class _HomePageState extends State<HomePage> {
       body: Column(children: [
         Container(
             alignment: Alignment.centerLeft,
-            padding: const EdgeInsets.only(top: 76, left: 24, right: 24),
+            padding: EdgeInsets.only(top: 76.h, left: 24.w, right: 24.w),
             child: StyledText(
               text: "Pokédex",
               style: textTheme.displaySmall!,
-              textHeight: 44,
+              textHeight: 44.h,
             )),
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
+          padding: EdgeInsets.symmetric(horizontal: 24.w),
           child: Text(
             "Use the advanced search to find Pokémon by type, weakness, ability and more!",
             style: textTheme.bodyLarge
-                ?.copyWith(color: gray[400], height: 24 / 16),
+                ?.copyWith(color: gray[400], height: (24 / 16)),
           ),
         ),
         SizedBox(
-          height: 16,
+          height: 16.h,
         ),
         SearchBar(),
         SizedBox(
-          height: 24,
+          height: 24.h,
         ),
         PokemonList(
           pokemonList: pokemonList,

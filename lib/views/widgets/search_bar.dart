@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pokeflutter/utils/palette.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../utils/palette.dart';
 
 class SearchBar extends StatelessWidget {
   const SearchBar({super.key});
@@ -7,7 +9,7 @@ class SearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 24),
+      margin: EdgeInsets.symmetric(horizontal: 24.w),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -20,29 +22,29 @@ class SearchBar extends StatelessWidget {
   }
 
   Container filterButton() => Container(
-        height: 48,
-        width: 48,
+        height: 48.r,
+        width: 48.r,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(16.r),
           color: gray[200],
         ),
         alignment: Alignment.center,
         child: Icon(
           Icons.filter_alt_outlined,
-          size: 24,
+          size: 24.r,
         ),
       );
 
   Container searchBar(BuildContext context) => Container(
-        height: 48,
-        width: 256,
+        height: 48.h,
+        width: 256.w,
         decoration: BoxDecoration(
-          border: Border.all(width: 1, color: gray[200]!),
-          borderRadius: BorderRadius.circular(16),
+          border: Border.all(width: 1.w, color: gray[200]!),
+          borderRadius: BorderRadius.circular(16.r),
         ),
         padding: EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 12,
+          horizontal: 16.w,
+          vertical: 12.h,
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -50,10 +52,10 @@ class SearchBar extends StatelessWidget {
           children: [
             Icon(
               Icons.search,
-              size: 24,
+              size: 24.r,
             ),
             SizedBox(
-              width: 8,
+              width: 8.w,
             ),
             Text(
               "Search a pokémon",
