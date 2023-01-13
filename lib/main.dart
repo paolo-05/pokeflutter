@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'views/home_page.dart';
 import 'utils/palette.dart';
+import 'utils/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,12 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-          primarySwatch: gray,
-          bottomNavigationBarTheme: BottomNavigationBarThemeData(
-            selectedItemColor: gray[500],
-            unselectedItemColor: gray[300],
-          )),
+      theme: pokeFlutterTheme,
       home: const HomePage(),
     );
   }
