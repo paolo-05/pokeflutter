@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'grid_item.dart';
 
 import '../../model/pokemon_list_item.dart';
 
@@ -23,9 +24,7 @@ class PokemonList extends StatelessWidget {
             mainAxisExtent: 100.h,
           ),
           itemBuilder: (BuildContext context, int index) {
-            return Container(
-                decoration: BoxDecoration(color: Colors.blue),
-                child: Text(pokemonList[index].name));
+            return GridItem(pokemon: pokemonList[index]);
           }),
     );
   }
