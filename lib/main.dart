@@ -12,8 +12,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          primarySwatch: Colors.blue,
+          bottomNavigationBarTheme: BottomNavigationBarThemeData(
+            selectedItemColor: Color(0xFF283141),
+            unselectedItemColor: Color(0xFF8D9DB9),
+            backgroundColor: Colors.white,
+          )),
       home: MainPage(),
     );
   }
@@ -23,6 +27,14 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(items: [
+        BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: "Home"),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.compare_arrows), label: "Compare"),
+        BottomNavigationBarItem(icon: Icon(Icons.quiz), label: "Quiz"),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.favorite_border), label: "Favorite"),
+      ]),
       body: Column(children: [
         Container(
             alignment: Alignment.centerLeft,
