@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pokeflutter/views/detail_page.dart';
 
 import 'views/home_page.dart';
-import 'utils/palette.dart';
 import 'utils/theme.dart';
 
 void main() {
@@ -21,6 +21,9 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           title: 'Flutter Demo',
           theme: pokeFlutterTheme,
+          routes: {
+            DetailPage.route: (context) => const DetailPage()
+          },
           home: const HomePage(),
         );
       },

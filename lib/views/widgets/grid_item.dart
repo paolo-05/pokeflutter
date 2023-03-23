@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pokeflutter/utils/palette.dart';
+import 'package:pokeflutter/views/detail_page.dart';
 import 'package:pokeflutter/views/widgets/styled_text.dart';
 
+import '../../model/pokemon_details.dart';
 import '../../utils/capitalize.dart';
 import '../../model/pokemon.dart';
 import '../../model/pokemon_list_item.dart';
@@ -12,6 +14,7 @@ import '../../utils/pokemon_costants.dart';
 
 class GridItem extends StatefulWidget {
   final PokemonListItem pokemon;
+
   const GridItem({super.key, required this.pokemon});
 
   @override
@@ -22,6 +25,7 @@ class _GridItemState extends State<GridItem> {
   Pokemon? pokemon;
   bool _isLoading = true;
   Color? pokemonColor;
+  Color mainPokemonColor = gray[300] ?? Colors.grey.shade300;
 
   @override
   void initState() {
@@ -44,7 +48,16 @@ class _GridItemState extends State<GridItem> {
             child: CircularProgressIndicator(),
           )
         : InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed(
+                DetailPage.route,
+                arguments: PokemonDetailArgs(
+                  pokemon: pokemon!,
+                  pokemonMainColor: mainPokemonColor,
+                  pokemonIndex: pokemon!.id,
+                ),
+              );
+            },
             child: Container(
               decoration: BoxDecoration(
                   color: pokemonColor,
