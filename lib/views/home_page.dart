@@ -32,8 +32,10 @@ class _HomePageState extends State<HomePage> {
     final jsonFile = await rootBundle.loadString("assets/pokemonList.json");
     final decoded = jsonDecode(jsonFile);
     for (var item in decoded["pokemonList"]) {
-      final pokemonListItem =
-          PokemonListItem(name: item["name"], url: item["url"]);
+      final pokemonListItem = PokemonListItem(
+        name: item["name"],
+        url: item["url"],
+      );
       pokemonList.add(pokemonListItem);
     }
     setState(() {});
@@ -66,7 +68,7 @@ class _HomePageState extends State<HomePage> {
         SizedBox(
           height: 16.h,
         ),
-        SearchBar(),
+        const SearchBar(),
         SizedBox(
           height: 24.h,
         ),

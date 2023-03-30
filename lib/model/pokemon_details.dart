@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:pokeflutter/model/pokemon.dart';
 
+/// Classe che definisce la struttura dei dati da passare alla pagina di dettaglio
 class PokemonDetailArgs {
   final Pokemon pokemon;
   final int pokemonIndex;

@@ -44,11 +44,11 @@ class _GridItemState extends State<GridItem> {
   @override
   Widget build(BuildContext context) {
     return _isLoading
-        ? Center(
-            child: CircularProgressIndicator(),
-          )
+        ? const Center(child: CircularProgressIndicator())
         : InkWell(
             onTap: () {
+              /// Navigazione alla pagina di dettaglio del pokemon passando a quest'ultima i dettagli dello stesso tramite
+              /// arguments (PokemonDetailArgs)
               Navigator.of(context).pushNamed(
                 DetailPage.route,
                 arguments: PokemonDetailArgs(
@@ -64,14 +64,14 @@ class _GridItemState extends State<GridItem> {
                   borderRadius: BorderRadius.circular(16.r)),
               child: Stack(children: [
                 Positioned(
+                  bottom: -20.r,
+                  right: -11.r,
                   child: SvgPicture.asset(
                     "assets/pokeball.svg",
                     height: 88.r,
                     width: 88.r,
                     color: Colors.white12,
                   ),
-                  bottom: -20.r,
-                  right: -11.r,
                 ),
                 Padding(
                   padding: EdgeInsets.all(12.r),
@@ -131,7 +131,8 @@ class _GridItemState extends State<GridItem> {
             children: [
               Image(
                 image: AssetImage(
-                    "assets/types_icons/Pokémon_${pokemon.typesList[i].capitalize()}_Type_Icon.png"),
+                  "assets/types_icons/Pokémon_${pokemon.typesList[i].capitalize()}_Type_Icon.png",
+                ),
                 height: 15.r,
                 width: 15.r,
               ),
@@ -167,9 +168,10 @@ class _GridItemState extends State<GridItem> {
           textHeight: 16.h,
         ),
         StyledText(
-          style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                color: Colors.white,
-              ),
+          style: Theme.of(context)
+              .textTheme
+              .bodySmall!
+              .copyWith(color: Colors.white),
           text: "#${pokemon?.id.toString().padLeft(3, "0")}",
           textHeight: 16.h,
         ),

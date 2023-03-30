@@ -15,13 +15,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(360, 979),
+      designSize: const Size(360, 979),
       minTextAdapt: true,
       builder: (context, child) {
         return MaterialApp(
           title: 'Flutter Demo',
           theme: pokeFlutterTheme,
           routes: {
+            /// Dichiarazione della pagina di dettaglio del Pokemon
             DetailPage.route: (context) => const DetailPage()
           },
           home: const HomePage(),

@@ -10,8 +10,6 @@ class PokemonList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final deviceSize = MediaQuery.of(context).size;
-
     return Container(
       height: 532.h,
       padding: EdgeInsets.symmetric(horizontal: 24.w),
