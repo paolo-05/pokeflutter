@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pokeflutter/views/widgets/about_tab.dart';
+import 'package:pokeflutter/views/widgets/evolutions_tab.dart';
+import 'package:pokeflutter/views/widgets/moves_tab.dart';
+import 'package:pokeflutter/views/widgets/stats_tab.dart';
+import 'package:pokeflutter/views/widgets/styled_text.dart';
 import 'package:pokeflutter/views/widgets/vertical_padded_text.dart';
 
 import '../model/pokemon_details.dart';
@@ -22,31 +27,82 @@ class _DetailPageState extends State<DetailPage> {
     /// Ricezione dei parametri del pokemon selezionato passati dalla schermata precendente con la lista di tutti i pokemon
     final args =
         ModalRoute.of(context)!.settings.arguments as PokemonDetailArgs;
+    TextTheme textTheme = Theme.of(context).textTheme;
 
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          SizedBox(height: 68.h),
-          /// Esempio di richiamo di un widget creato da noi all'interno del widget padre build
-          _header(context, args),
-          SizedBox(
-            height: 260.h,
-            width: 260.w,
-            child: Image.network(args.pokemon.urlImage),
-          ),
-          SizedBox(height: 17.h),
-          Text(
-            args.pokemon.name,
-            style: const TextStyle(fontSize: 22),
-          ),
-          Text(
-            args.pokemon.typesList[0],
-            style: const TextStyle(fontSize: 16),
-          ),
-        ],
+    return DefaultTabController(
+      length: 4,
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(height: 68.h),
+
+            /// Esempio di richiamo di un widget creato da noi all'interno del widget padre build
+            _header(context, args),
+            SizedBox(
+              height: 260.h,
+              width: 260.w,
+              child: Image.network(args.pokemon.urlImage),
+            ),
+            SizedBox(height: 17.h),
+            Text(
+              args.pokemon.name,
+              style: const TextStyle(fontSize: 22),
+            ),
+            Text(
+              args.pokemon.typesList[0],
+              style: const TextStyle(fontSize: 16),
+            ),
+            SizedBox(height: 20.h),
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child: TabBar(
+                tabs: [
+                  Tab(
+                    child: StyledText(
+                      text: "About",
+                      style: textTheme.bodyMedium!,
+                      textHeight: 44.h,
+                    ),
+                  ),
+                  Tab(
+                    child: StyledText(
+                      text: "Stats",
+                      style: textTheme.bodyMedium!,
+                      textHeight: 44.h,
+                    ),
+                  ),
+                  Tab(
+                    child: StyledText(
+                      text: "Moves",
+                      style: textTheme.bodyMedium!,
+                      textHeight: 44.h,
+                    ),
+                  ),
+                  Tab(
+                    child: StyledText(
+                      text: "Evolutions",
+                      style: textTheme.bodyMedium!,
+                      textHeight: 44.h,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: TabBarView(
+                children: [
+                  AboutTab(),
+                  StatsTab(),
+                  MovesTab(),
+                  EvolutionsTab(),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -68,6 +124,7 @@ class _DetailPageState extends State<DetailPage> {
               Navigator.of(context).pop();
             },
           ),
+
           /// Testo stilizzato contenente l'ID del pokemon all'interno del pokedex
           VerticalPaddedText(
             content: "#${args.pokemonIndex.toString().padLeft(3, "0")}",
