@@ -32,76 +32,84 @@ class _DetailPageState extends State<DetailPage> {
     return DefaultTabController(
       length: 4,
       child: Scaffold(
-        backgroundColor: Colors.white,
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(height: 68.h),
+        //backgroundColor: Colors.white,
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: [args.pokemonMainColor, Colors.white],
+                begin: Alignment.topCenter,
+                end: Alignment.center),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(height: 68.h),
 
-            /// Esempio di richiamo di un widget creato da noi all'interno del widget padre build
-            _header(context, args),
-            SizedBox(
-              height: 260.h,
-              width: 260.w,
-              child: Image.network(args.pokemon.urlImage),
-            ),
-            SizedBox(height: 17.h),
-            Text(
-              args.pokemon.name,
-              style: const TextStyle(fontSize: 22),
-            ),
-            Text(
-              args.pokemon.typesList[0],
-              style: const TextStyle(fontSize: 16),
-            ),
-            SizedBox(height: 20.h),
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: TabBar(
-                tabs: [
-                  Tab(
-                    child: StyledText(
-                      text: "About",
-                      style: textTheme.bodyMedium!,
-                      textHeight: 44.h,
-                    ),
-                  ),
-                  Tab(
-                    child: StyledText(
-                      text: "Stats",
-                      style: textTheme.bodyMedium!,
-                      textHeight: 44.h,
-                    ),
-                  ),
-                  Tab(
-                    child: StyledText(
-                      text: "Moves",
-                      style: textTheme.bodyMedium!,
-                      textHeight: 44.h,
-                    ),
-                  ),
-                  Tab(
-                    child: StyledText(
-                      text: "Evolutions",
-                      style: textTheme.bodyMedium!,
-                      textHeight: 44.h,
-                    ),
-                  ),
-                ],
+              /// Esempio di richiamo di un widget creato da noi all'interno del widget padre build
+              _header(context, args),
+              SizedBox(
+                height: 260.h,
+                width: 260.w,
+                child: Image.network(args.pokemon.urlImage),
               ),
-            ),
-            Expanded(
-              child: TabBarView(
-                children: [
-                  AboutTab(),
-                  StatsTab(),
-                  MovesTab(),
-                  EvolutionsTab(),
-                ],
+              SizedBox(height: 17.h),
+              Text(
+                args.pokemon.name,
+                style: const TextStyle(fontSize: 22),
               ),
-            ),
-          ],
+              Text(
+                args.pokemon.typesList[0],
+                style: const TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 20.h),
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: TabBar(
+                  tabs: [
+                    Tab(
+                      child: StyledText(
+                        text: "About",
+                        style: textTheme.bodyMedium!,
+                        textHeight: 44.h,
+                      ),
+                    ),
+                    Tab(
+                      child: StyledText(
+                        text: "Stats",
+                        style: textTheme.bodyMedium!,
+                        textHeight: 44.h,
+                      ),
+                    ),
+                    Tab(
+                      child: StyledText(
+                        text: "Moves",
+                        style: textTheme.bodyMedium!,
+                        textHeight: 44.h,
+                      ),
+                    ),
+                    Tab(
+                      child: StyledText(
+                        text: "Evolutions",
+                        style: textTheme.bodyMedium!,
+                        textHeight: 44.h,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: TabBarView(
+                  children: [
+                    AboutTab(),
+                    StatsTab(),
+                    MovesTab(),
+                    EvolutionsTab(),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

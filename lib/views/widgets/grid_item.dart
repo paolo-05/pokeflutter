@@ -53,7 +53,7 @@ class _GridItemState extends State<GridItem> {
                 DetailPage.route,
                 arguments: PokemonDetailArgs(
                   pokemon: pokemon!,
-                  pokemonMainColor: mainPokemonColor,
+                  pokemonMainColor: pokemonColor!,
                   pokemonIndex: pokemon!.id,
                 ),
               );
