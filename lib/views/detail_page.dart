@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pokeflutter/views/widgets/about_tab.dart';
-import 'package:pokeflutter/views/widgets/evolutions_tab.dart';
-import 'package:pokeflutter/views/widgets/moves_tab.dart';
-import 'package:pokeflutter/views/widgets/stats_tab.dart';
-import 'package:pokeflutter/views/widgets/styled_text.dart';
-import 'package:pokeflutter/views/widgets/vertical_padded_text.dart';
 
+import '../utils/capitalize.dart';
+import 'widgets/moves_tab.dart';
+import 'widgets/about_tab.dart';
+import 'widgets/evolutions_tab.dart';
+import 'widgets/stats_tab.dart';
+import 'widgets/styled_text.dart';
+import 'widgets/vertical_padded_text.dart';
 import '../model/pokemon_details.dart';
 import '../utils/palette.dart';
 
@@ -32,7 +33,6 @@ class _DetailPageState extends State<DetailPage> {
     return DefaultTabController(
       length: 4,
       child: Scaffold(
-        //backgroundColor: Colors.white,
         body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -54,51 +54,59 @@ class _DetailPageState extends State<DetailPage> {
                 child: Image.network(args.pokemon.urlImage),
               ),
               SizedBox(height: 17.h),
-              Text(
-                args.pokemon.name,
-                style: const TextStyle(fontSize: 22),
+              StyledText(
+                style: textTheme.titleLarge!
+                    .copyWith(color: gray[500], fontSize: 22.r),
+                textHeight: 28.h,
+                text: args.pokemon.name.capitalize(),
               ),
-              Text(
-                args.pokemon.typesList[0],
-                style: const TextStyle(fontSize: 16),
+              StyledText(
+                style: textTheme.bodyLarge!
+                    .copyWith(color: gray[300], fontSize: 16.r),
+                textHeight: 24.h,
+                text: "${args.pokemon.typesList[0].capitalize()} Pokémon",
               ),
               SizedBox(height: 20.h),
               SizedBox(
-                width: MediaQuery.of(context).size.width,
+                width: 360.w,
                 child: TabBar(
                   tabs: [
                     Tab(
+                      iconMargin: EdgeInsets.all(24.h),
                       child: StyledText(
                         text: "About",
-                        style: textTheme.bodyMedium!,
+                        style: textTheme.bodyMedium!.copyWith(color: gray[500]),
                         textHeight: 44.h,
                       ),
                     ),
                     Tab(
+                      iconMargin: EdgeInsets.all(24.h),
                       child: StyledText(
                         text: "Stats",
-                        style: textTheme.bodyMedium!,
+                        style: textTheme.bodyMedium!.copyWith(color: gray[500]),
                         textHeight: 44.h,
                       ),
                     ),
                     Tab(
+                      iconMargin: EdgeInsets.all(24.h),
                       child: StyledText(
                         text: "Moves",
-                        style: textTheme.bodyMedium!,
+                        style: textTheme.bodyMedium!.copyWith(color: gray[500]),
                         textHeight: 44.h,
                       ),
                     ),
                     Tab(
+                      iconMargin: EdgeInsets.all(24.h),
                       child: StyledText(
                         text: "Evolutions",
-                        style: textTheme.bodyMedium!,
+                        style: textTheme.bodyMedium!.copyWith(color: gray[500]),
                         textHeight: 44.h,
                       ),
                     ),
                   ],
                 ),
               ),
-              Expanded(
+              const Expanded(
                 child: TabBarView(
                   children: [
                     AboutTab(),

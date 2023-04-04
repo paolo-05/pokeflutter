@@ -7,10 +7,12 @@ class PokemonDetailArgs {
   final Pokemon pokemon;
   final int pokemonIndex;
   final Color pokemonMainColor;
+  final String pokemonDescription;
 
   PokemonDetailArgs({
     required this.pokemon,
     required this.pokemonIndex,
     required this.pokemonMainColor,
+    required this.pokemonDescription,
   });
 }

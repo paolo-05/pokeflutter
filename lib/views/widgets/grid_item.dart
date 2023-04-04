@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pokeflutter/utils/palette.dart';
-import 'package:pokeflutter/views/detail_page.dart';
-import 'package:pokeflutter/views/widgets/styled_text.dart';
 
+import '../../utils/palette.dart';
+import '../detail_page.dart';
+import 'styled_text.dart';
 import '../../model/pokemon_details.dart';
 import '../../utils/capitalize.dart';
 import '../../model/pokemon.dart';
 import '../../model/pokemon_list_item.dart';
 import '../../utils/pokemon_api.dart';
 import '../../utils/pokemon_costants.dart';
+import '../../utils/poke_desc_fetch.dart';
 
 class GridItem extends StatefulWidget {
   final PokemonListItem pokemon;
@@ -26,6 +27,7 @@ class _GridItemState extends State<GridItem> {
   bool _isLoading = true;
   Color? pokemonColor;
   Color mainPokemonColor = gray[300] ?? Colors.grey.shade300;
+  String? pokemonDescription;
 
   @override
   void initState() {
@@ -36,6 +38,8 @@ class _GridItemState extends State<GridItem> {
   void fetchPokemonData() async {
     pokemon = await PokemonApi.getPokemonDetails(widget.pokemon.name);
     pokemonColor = listPokemonTypeColor[pokemon?.typesList[0].toLowerCase()];
+    pokemonDescription =
+        await PokeDescFetch.getDescription(widget.pokemon.name);
     setState(() {
       _isLoading = false;
     });
@@ -55,6 +59,7 @@ class _GridItemState extends State<GridItem> {
                   pokemon: pokemon!,
                   pokemonMainColor: pokemonColor!,
                   pokemonIndex: pokemon!.id,
+                  pokemonDescription: pokemonDescription!,
                 ),
               );
             },
@@ -91,7 +96,7 @@ class _GridItemState extends State<GridItem> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: typesList(pokemon!),
                           ),
-                          Container(
+                          SizedBox(
                             height: 56.r,
                             width: 56.r,
                             child: Image.network(
