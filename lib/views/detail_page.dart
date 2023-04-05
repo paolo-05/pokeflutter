@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../utils/capitalize.dart';
-import 'widgets/moves_tab.dart';
-import 'widgets/about_tab.dart';
-import 'widgets/evolutions_tab.dart';
-import 'widgets/stats_tab.dart';
+import 'widgets/tab_bar_children/moves_tab.dart';
+import 'widgets/tab_bar_children/about_tab.dart';
+import 'widgets/tab_bar_children/evolutions_tab.dart';
+import 'widgets/tab_bar_children/stats_tab.dart';
 import 'widgets/styled_text.dart';
 import 'widgets/vertical_padded_text.dart';
 import '../model/pokemon_details.dart';

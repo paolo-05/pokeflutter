@@ -67,6 +67,8 @@ flutter:
     - assets/pokeball.svg
     - assets/line.svg
     - assets/types_icons/
+    - assets/stats_icons/filled.svg
+    - assets/stats_icons/blank.svg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

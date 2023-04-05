@@ -7,6 +7,8 @@ class Pokemon {
   final double height;
   final List<String> typesList;
   final List<String> abilitiesList;
+  final List<int> statsList;
+  final List<String> movesList;
 
   Pokemon({
     required this.id,
@@ -17,6 +19,8 @@ class Pokemon {
     required this.height,
     required this.typesList,
     required this.abilitiesList,
+    required this.statsList,
+    required this.movesList,
   });
 
   Pokemon.fromJson(Map<String, dynamic> json)
@@ -28,7 +32,9 @@ class Pokemon {
         weight = json["weight"].toDouble() / 10.0,
         height = json["height"].toDouble() * 10.0,
         typesList = getListTypesFromJson(json["types"]),
-        abilitiesList = getListAbilitiesFromJson(json["abilities"]);
+        abilitiesList = getListAbilitiesFromJson(json["abilities"]),
+        statsList = getListStatsFromJson(json["stats"]),
+        movesList = getListMovesFromJson(json["moves"]);
 }
 
 List<String> getListTypesFromJson(List<dynamic> json) {
@@ -43,6 +49,23 @@ List<String> getListAbilitiesFromJson(List<dynamic> json) {
   final List<String> abilitiesList = [];
   for (var element in json) {
     abilitiesList.add(element["ability"]["name"]);
+  }
+
+  return abilitiesList;
+}
+
+List<int> getListStatsFromJson(List<dynamic> json) {
+  final List<int> abilitiesList = [];
+  for (var element in json) {
+    abilitiesList.add(element["base_stat"]);
+  }
+  return abilitiesList;
+}
+
+List<String> getListMovesFromJson(List<dynamic> json) {
+  final List<String> abilitiesList = [];
+  for (var element in json) {
+    abilitiesList.add(element["move"]["name"]);
   }
   return abilitiesList;
 }
