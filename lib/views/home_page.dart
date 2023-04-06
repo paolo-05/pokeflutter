@@ -46,36 +46,38 @@ class _HomePageState extends State<HomePage> {
     final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
-      floatingActionButton: const RandomFloatingButton(),
+      floatingActionButton: RandomFloatingButton(pokemonList: pokemonList),
       bottomNavigationBar: const BottomNavBar(),
-      body: Column(children: [
-        Container(
-            alignment: Alignment.centerLeft,
-            padding: EdgeInsets.only(top: 76.h, left: 24.w, right: 24.w),
-            child: StyledText(
-              text: "Pokédex",
-              style: textTheme.displaySmall!,
-              textHeight: 44.h,
-            )),
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: 24.w),
-          child: Text(
-            "Use the advanced search to find Pokémon by type, weakness, ability and more!",
-            style: textTheme.bodyLarge
-                ?.copyWith(color: gray[400], height: (24 / 16)),
+      body: Column(
+        children: [
+          Container(
+              alignment: Alignment.centerLeft,
+              padding: EdgeInsets.only(top: 76.h, left: 24.w, right: 24.w),
+              child: StyledText(
+                text: "Pokédex",
+                style: textTheme.displaySmall!,
+                textHeight: 44.h,
+              )),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 24.w),
+            child: Text(
+              "Use the advanced search to find Pokémon by type, weakness, ability and more!",
+              style: textTheme.bodyLarge
+                  ?.copyWith(color: gray[400], height: (24 / 16)),
+            ),
           ),
-        ),
-        SizedBox(
-          height: 16.h,
-        ),
-        const SearchBar(),
-        SizedBox(
-          height: 24.h,
-        ),
-        PokemonList(
-          pokemonList: pokemonList,
-        ),
-      ]),
+          SizedBox(
+            height: 16.h,
+          ),
+          const SearchBar(),
+          SizedBox(
+            height: 24.h,
+          ),
+          PokemonList(
+            pokemonList: pokemonList,
+          ),
+        ],
+      ),
     );
   }
 }

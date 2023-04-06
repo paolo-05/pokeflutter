@@ -84,7 +84,7 @@ class _StatsTabState extends State<StatsTab> {
     return statsList;
   }
 
-  Container statsBar(int value, int max) {
+  SizedBox statsBar(int value, int max) {
     double percentageOn15 = value * 15 / max;
     percentageOn15.round();
     List<Widget> statsBar = [];
@@ -102,13 +102,13 @@ class _StatsTabState extends State<StatsTab> {
           ),
         );
       }
-      if (i < max) {
+      if (i < 14) {
         statsBar.add(SizedBox(
           width: 3.w,
         ));
       }
     }
-    return Container(
+    return SizedBox(
       width: 208.w,
       child: Row(
         children: statsBar,
