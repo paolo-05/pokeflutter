@@ -39,13 +39,6 @@ class _StatsTabState extends State<StatsTab> {
     ];
 
     for (var i = 0; i < 6; i++) {
-      if (i == 0) {
-        statsList.add(
-          SizedBox(
-            height: 12.h,
-          ),
-        );
-      }
       statsList.add(
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),

@@ -106,6 +106,7 @@ class _DetailPageState extends State<DetailPage> {
                   ],
                 ),
               ),
+              SizedBox(height: 24.h),
               const Expanded(
                 child: TabBarView(
                   children: [

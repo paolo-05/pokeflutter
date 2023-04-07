@@ -25,7 +25,6 @@ class _AboutTabState extends State<AboutTab> {
       //mainAxisAlignment: MainAxisAlignment.center,
       //crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: 24.h),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 23.w),
           child: Row(
