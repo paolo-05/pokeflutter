@@ -1,6 +1,7 @@
 class Pokemon {
   final int id;
   final String name;
+  final String speciesUrl;
   final String urlSprite;
   final String urlImage;
   final double weight;
@@ -13,6 +14,7 @@ class Pokemon {
   Pokemon({
     required this.id,
     required this.name,
+    required this.speciesUrl,
     required this.urlSprite,
     required this.urlImage,
     required this.weight,
@@ -34,7 +36,8 @@ class Pokemon {
         typesList = getListTypesFromJson(json["types"]),
         abilitiesList = getListAbilitiesFromJson(json["abilities"]),
         statsList = getListStatsFromJson(json["stats"]),
-        movesList = getListMovesFromJson(json["moves"]);
+        movesList = getListMovesFromJson(json["moves"]),
+        speciesUrl = json["species"]["url"];
 }
 
 List<String> getListTypesFromJson(List<dynamic> json) {

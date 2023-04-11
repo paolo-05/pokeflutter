@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:http/http.dart' as http;
 
-class PokeDescFetch {
+class PokemonDescriptionApi {
   static Future<String?> getDescription(String name) async {
     try {
       final url = Uri.parse("https://pokeapi.co/api/v2/pokemon-species/$name");

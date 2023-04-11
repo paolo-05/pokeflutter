@@ -11,7 +11,8 @@ import '../../model/pokemon.dart';
 import '../../model/pokemon_list_item.dart';
 import '../../utils/pokemon_api.dart';
 import '../../utils/pokemon_costants.dart';
-import '../../utils/poke_desc_fetch.dart';
+import '../../utils/pokemon_description_api.dart';
+import '../../../utils/pokemon_evolutions_api.dart';
 
 class GridItem extends StatefulWidget {
   final PokemonListItem pokemon;
@@ -28,7 +29,7 @@ class _GridItemState extends State<GridItem> {
   Color? pokemonColor;
   Color mainPokemonColor = gray[300] ?? Colors.grey.shade300;
   String? pokemonDescription;
-
+  List<dynamic>? evolutionData;
   @override
   void initState() {
     fetchPokemonData();
@@ -39,10 +40,14 @@ class _GridItemState extends State<GridItem> {
     pokemon = await PokemonApi.getPokemonDetails(widget.pokemon.name);
     pokemonColor = listPokemonTypeColor[pokemon?.typesList[0].toLowerCase()];
     pokemonDescription =
-        await PokeDescFetch.getDescription(widget.pokemon.name);
-    setState(() {
-      _isLoading = false;
-    });
+        await PokemonDescriptionApi.getDescription(widget.pokemon.name);
+    evolutionData =
+        await PokemonEvolutionsApi.getEvolutions(widget.pokemon.name);
+    setState(
+      () {
+        _isLoading = false;
+      },
+    );
   }
 
   @override
@@ -60,6 +65,7 @@ class _GridItemState extends State<GridItem> {
                   pokemonMainColor: pokemonColor!,
                   pokemonIndex: pokemon!.id,
                   pokemonDescription: pokemonDescription!,
+                  pokemonEvolutions: evolutionData!,
                 ),
               );
             },

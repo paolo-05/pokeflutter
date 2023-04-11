@@ -7,8 +7,9 @@ import '../../model/pokemon.dart';
 import '../../model/pokemon_details.dart';
 import '../../model/pokemon_list_item.dart';
 import '../../utils/palette.dart';
-import '../../utils/poke_desc_fetch.dart';
+import '../../utils/pokemon_description_api.dart';
 import '../../utils/pokemon_api.dart';
+import '../../utils/pokemon_evolutions_api.dart';
 import '../detail_page.dart';
 import 'styled_text.dart';
 import '../../utils/pokemon_costants.dart';
@@ -25,6 +26,7 @@ class _RandomFloatingButtonState extends State<RandomFloatingButton> {
   Pokemon? pokemon;
   Color? pokemonColor;
   String? pokemonDescription;
+  List<dynamic>? evolutionData;
   int? randomIndex;
   @override
   void initState() {
@@ -36,7 +38,8 @@ class _RandomFloatingButtonState extends State<RandomFloatingButton> {
     String pokeName = widget.pokemonList[index].name;
     pokemon = await PokemonApi.getPokemonDetails(pokeName);
     pokemonColor = listPokemonTypeColor[pokemon?.typesList[0].toLowerCase()];
-    pokemonDescription = await PokeDescFetch.getDescription(pokeName);
+    pokemonDescription = await PokemonDescriptionApi.getDescription(pokeName);
+    evolutionData = await PokemonEvolutionsApi.getEvolutions(pokeName);
     Navigator.of(context).pushNamed(
       DetailPage.route,
       arguments: PokemonDetailArgs(
@@ -44,6 +47,7 @@ class _RandomFloatingButtonState extends State<RandomFloatingButton> {
         pokemonMainColor: pokemonColor!,
         pokemonIndex: pokemon!.id,
         pokemonDescription: pokemonDescription!,
+        pokemonEvolutions: evolutionData!,
       ),
     );
   }
@@ -51,23 +55,24 @@ class _RandomFloatingButtonState extends State<RandomFloatingButton> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: fetchPokemonData(),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          return FloatingActionButton.extended(
-              backgroundColor: const Color(0xFFFFCC00),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16.r)),
-              elevation: 0,
-              icon: Icon(
-                Icons.auto_awesome,
-                color: gray[500],
-              ),
-              label: StyledText(
-                text: "Random",
-                style: Theme.of(context).textTheme.labelLarge!,
-                textHeight: 20.h,
-              ),
-              onPressed: () => fetchPokemonData());
-        });
+      future: fetchPokemonData(),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        return FloatingActionButton.extended(
+            backgroundColor: const Color(0xFFFFCC00),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16.r)),
+            elevation: 0,
+            icon: Icon(
+              Icons.auto_awesome,
+              color: gray[500],
+            ),
+            label: StyledText(
+              text: "Random",
+              style: Theme.of(context).textTheme.labelLarge!,
+              textHeight: 20.h,
+            ),
+            onPressed: () => fetchPokemonData());
+      },
+    );
   }
 }
