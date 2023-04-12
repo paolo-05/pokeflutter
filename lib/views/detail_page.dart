@@ -54,17 +54,23 @@ class _DetailPageState extends State<DetailPage> {
                 child: Image.network(args.pokemon.urlImage),
               ),
               SizedBox(height: 17.h),
-              StyledText(
-                style: textTheme.titleLarge!
-                    .copyWith(color: gray[500], fontSize: 22.r),
-                textHeight: 28.h,
-                text: args.pokemon.name.capitalize(),
+              SizedBox(
+                height: 32.h,
+                child: StyledText(
+                  style: textTheme.titleLarge!
+                      .copyWith(color: gray[500], fontSize: 22.r),
+                  textHeight: 28.h,
+                  text: args.pokemon.name.capitalize(),
+                ),
               ),
-              StyledText(
-                style: textTheme.bodyLarge!
-                    .copyWith(color: gray[300], fontSize: 16.r),
-                textHeight: 24.h,
-                text: "${args.pokemon.typesList[0].capitalize()} Pokémon",
+              SizedBox(
+                height: 26.h,
+                child: StyledText(
+                  style: textTheme.bodyLarge!
+                      .copyWith(color: gray[300], fontSize: 16.r),
+                  textHeight: 24.h,
+                  text: "${args.pokemon.typesList[0].capitalize()} Pokémon",
+                ),
               ),
               SizedBox(height: 20.h),
               SizedBox(

@@ -90,10 +90,14 @@ class _EvolutionsTabState extends State<EvolutionsTab> {
                         text: "#${id.toString().padLeft(3, "0")}",
                         textHeight: 24.h,
                       ),
-                      StyledText(
-                        style: textTheme.titleLarge!.copyWith(color: gray[500]),
-                        text: name.capitalize(),
-                        textHeight: 28.h,
+                      SizedBox(
+                        height: 32.h,
+                        child: StyledText(
+                          style:
+                              textTheme.titleLarge!.copyWith(color: gray[500]),
+                          text: name.capitalize(),
+                          textHeight: 28.h,
+                        ),
                       ),
                       SizedBox(height: 8.h),
                       Column(

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pokeflutter/utils/capitalize.dart';
 import 'package:pokeflutter/views/widgets/styled_text.dart';
-import '../../../model/pokemon.dart';
 import '../../../model/pokemon_details.dart';
 import '../../../utils/palette.dart';
 

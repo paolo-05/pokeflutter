@@ -40,16 +40,6 @@ class _RandomFloatingButtonState extends State<RandomFloatingButton> {
     pokemonColor = listPokemonTypeColor[pokemon?.typesList[0].toLowerCase()];
     pokemonDescription = await PokemonDescriptionApi.getDescription(pokeName);
     evolutionData = await PokemonEvolutionsApi.getEvolutions(pokeName);
-    Navigator.of(context).pushNamed(
-      DetailPage.route,
-      arguments: PokemonDetailArgs(
-        pokemon: pokemon!,
-        pokemonMainColor: pokemonColor!,
-        pokemonIndex: pokemon!.id,
-        pokemonDescription: pokemonDescription!,
-        pokemonEvolutions: evolutionData!,
-      ),
-    );
   }
 
   @override
@@ -58,20 +48,33 @@ class _RandomFloatingButtonState extends State<RandomFloatingButton> {
       future: fetchPokemonData(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return FloatingActionButton.extended(
-            backgroundColor: const Color(0xFFFFCC00),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16.r)),
-            elevation: 0,
-            icon: Icon(
-              Icons.auto_awesome,
-              color: gray[500],
-            ),
-            label: StyledText(
-              text: "Random",
-              style: Theme.of(context).textTheme.labelLarge!,
-              textHeight: 20.h,
-            ),
-            onPressed: () => fetchPokemonData());
+          backgroundColor: const Color(0xFFFFCC00),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+          elevation: 0,
+          icon: Icon(
+            Icons.auto_awesome,
+            color: gray[500],
+          ),
+          label: StyledText(
+            text: "Random",
+            style: Theme.of(context).textTheme.labelLarge!,
+            textHeight: 20.h,
+          ),
+          onPressed: () {
+            Navigator.of(context).pushNamed(
+              DetailPage.route,
+              arguments: PokemonDetailArgs(
+                pokemon: pokemon!,
+                pokemonMainColor: pokemonColor!,
+                pokemonIndex: pokemon!.id,
+                pokemonDescription: pokemonDescription!,
+                pokemonEvolutions: evolutionData!,
+              ),
+            );
+            fetchPokemonData();
+          },
+        );
       },
     );
   }
