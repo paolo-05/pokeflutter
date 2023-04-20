@@ -22,11 +22,11 @@ class _StatsTabState extends State<StatsTab> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: statsList(args.pokemon),
+      children: _statsList(args.pokemon),
     );
   }
 
-  List<Widget> statsList(Pokemon pokemon) {
+  List<Widget> _statsList(Pokemon pokemon) {
     List<int> statsMax = [150, 110, 110, 110, 100, 110];
     List<Widget> statsList = [];
     List<String> statsName = [
@@ -68,7 +68,7 @@ class _StatsTabState extends State<StatsTab> {
                   textHeight: 24.h,
                 ),
               ),
-              statsBar(pokemon.statsList[i], statsMax[i])
+              _statsBar(pokemon.statsList[i], statsMax[i])
             ],
           ),
         ),
@@ -77,7 +77,7 @@ class _StatsTabState extends State<StatsTab> {
     return statsList;
   }
 
-  SizedBox statsBar(int value, int max) {
+  SizedBox _statsBar(int value, int max) {
     double percentageOn15 = value * 15 / max;
     percentageOn15.round();
     List<Widget> statsBar = [];

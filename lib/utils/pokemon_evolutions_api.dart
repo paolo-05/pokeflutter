@@ -7,29 +7,31 @@ class PokemonEvolutionsApi {
   static Future<List<dynamic>> getEvolutions(String pokemonName) async {
     final response = await http
         .get(Uri.parse('https://pokeapi.co/api/v2/pokemon/$pokemonName'));
-    final pokemonData = json.decode(response.body);
-    final speciesUrl = pokemonData['species']['url'];
+    final speciesUrl = json.decode(response.body)['species']['url'];
+
     final speciesResponse = await http.get(Uri.parse(speciesUrl));
-    final speciesData = json.decode(speciesResponse.body);
-    final evolutionChainUrl = speciesData['evolution_chain']['url'];
+    final evolutionChainUrl =
+        json.decode(speciesResponse.body)['evolution_chain']['url'];
+
     final evolutionChainResponse = await http.get(Uri.parse(evolutionChainUrl));
-    final evolutionChainData = json.decode(evolutionChainResponse.body);
-    dynamic evolutionData = evolutionChainData['chain'];
+    dynamic evolutionData = json.decode(evolutionChainResponse.body)['chain'];
 
     final List<dynamic> evolutions = [];
     while (evolutionData != null) {
       final int minLevel = evolutionData['evolution_details'].isNotEmpty
           ? evolutionData['evolution_details'][0]['min_level']
           : 0;
-      final species = evolutionData['species'];
-      final speciesResponse = await http.get(Uri.parse(species['url']));
+      final speciesResponse =
+          await http.get(Uri.parse(evolutionData['species']['url']));
       final speciesData = json.decode(speciesResponse.body);
       final pokemonResponse = await http
           .get(Uri.parse(speciesData['varieties'][0]["pokemon"]["url"]));
-      final pokemonData =
-          json.decode(pokemonResponse.body) as Map<String, dynamic>;
-      evolutions
-          .add({'pokemon': Pokemon.fromJson(pokemonData), 'level': minLevel});
+
+      evolutions.add({
+        'pokemon': Pokemon.fromJson(
+            json.decode(pokemonResponse.body) as Map<String, dynamic>),
+        'level': minLevel
+      });
 
       evolutionData = evolutionData['evolves_to'].isNotEmpty
           ? evolutionData['evolves_to'][0]

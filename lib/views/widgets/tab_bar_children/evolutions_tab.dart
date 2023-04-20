@@ -25,8 +25,6 @@ class _EvolutionsTabState extends State<EvolutionsTab> {
       itemBuilder: (BuildContext context, int index) {
         final textTheme = Theme.of(context).textTheme;
         final evolution = args.pokemonEvolutions[index]['pokemon'] as Pokemon;
-        final name = evolution.name;
-        final id = evolution.id;
         final level = args.pokemonEvolutions[index]['level'];
 
         return Column(
@@ -55,8 +53,6 @@ class _EvolutionsTabState extends State<EvolutionsTab> {
                       ],
                     ),
                   )
-                //Text('Level $level'),
-
                 : const SizedBox(),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 44.w),
@@ -87,7 +83,7 @@ class _EvolutionsTabState extends State<EvolutionsTab> {
                     children: [
                       StyledText(
                         style: textTheme.bodyLarge!.copyWith(color: gray[300]),
-                        text: "#${id.toString().padLeft(3, "0")}",
+                        text: "#${evolution.id.toString().padLeft(3, "0")}",
                         textHeight: 24.h,
                       ),
                       SizedBox(
@@ -95,7 +91,7 @@ class _EvolutionsTabState extends State<EvolutionsTab> {
                         child: StyledText(
                           style:
                               textTheme.titleLarge!.copyWith(color: gray[500]),
-                          text: name.capitalize(),
+                          text: evolution.name.capitalize(),
                           textHeight: 28.h,
                         ),
                       ),
@@ -110,6 +106,7 @@ class _EvolutionsTabState extends State<EvolutionsTab> {
                 ],
               ),
             ),
+            SizedBox(height: 20.h),
           ],
         );
       },
@@ -153,7 +150,7 @@ class _EvolutionsTabState extends State<EvolutionsTab> {
                     .copyWith(color: gray[500]),
                 textHeight: 20.h,
                 text: pokemon.typesList[i].capitalize(),
-              )
+              ),
             ],
           ),
         ),

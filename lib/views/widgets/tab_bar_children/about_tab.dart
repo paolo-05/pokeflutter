@@ -204,7 +204,7 @@ List<Widget> typesList(Pokemon pokemon) {
     }
     typesList.add(
       Container(
-        padding: EdgeInsets.symmetric(horizontal: 2.r),
+        padding: EdgeInsets.symmetric(horizontal: 2.w),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -213,8 +213,8 @@ List<Widget> typesList(Pokemon pokemon) {
               image: AssetImage(
                 "assets/types_icons/Pokémon_${pokemon.typesList[i].capitalize()}_Type_Icon.png",
               ),
-              height: 24.r,
-              width: 24.r,
+              height: 24.h,
+              width: 24.w,
             ),
           ],
         ),

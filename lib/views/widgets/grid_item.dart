@@ -44,9 +44,7 @@ class _GridItemState extends State<GridItem> {
     evolutionData =
         await PokemonEvolutionsApi.getEvolutions(widget.pokemon.name);
     setState(
-      () {
-        _isLoading = false;
-      },
+      () => _isLoading = false,
     );
   }
 

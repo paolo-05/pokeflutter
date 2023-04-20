@@ -17,33 +17,29 @@ class _MovesTabState extends State<MovesTab> {
   Widget build(BuildContext context) {
     final args =
         ModalRoute.of(context)!.settings.arguments as PokemonDetailArgs;
-    return CustomScrollView(
-      slivers: <Widget>[
-        SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (BuildContext context, int index) {
-              return Padding(
-                padding: EdgeInsets.only(left: 24.w, right: 24.w, bottom: 16.h),
-                child: Container(
-                  decoration: BoxDecoration(
-                      border: Border(
-                          bottom: BorderSide(width: 1.r, color: gray[200]!))),
-                  height: 40.h,
-                  child: StyledText(
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyLarge!
-                        .copyWith(color: gray[500]),
-                    text: args.pokemon.movesList[index].capitalize(),
-                    textHeight: 24.h,
-                  ),
-                ),
-              );
-            },
-            childCount: args.pokemon.movesList.length,
+    return ListView.builder(
+      itemCount: args.pokemon.movesList.length,
+      itemBuilder: (BuildContext context, int index) {
+        return Padding(
+          padding: EdgeInsets.only(left: 24.w, right: 24.w, bottom: 16.h),
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(width: 1.r, color: gray[200]!),
+              ),
+            ),
+            height: 40.h,
+            child: StyledText(
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyLarge!
+                  .copyWith(color: gray[500]),
+              text: args.pokemon.movesList[index].capitalize(),
+              textHeight: 24.h,
+            ),
           ),
-        )
-      ],
+        );
+      },
     );
   }
 }
