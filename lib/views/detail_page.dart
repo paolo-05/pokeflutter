@@ -143,9 +143,7 @@ class _DetailPageState extends State<DetailPage> {
             padding: EdgeInsets.zero,
             icon: const Icon(Icons.arrow_back_ios_new),
             iconSize: 24.h,
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
+            onPressed: () => Navigator.of(context).pop(),
           ),
 
           /// Testo stilizzato contenente l'ID del pokemon all'interno del pokedex
@@ -158,9 +156,12 @@ class _DetailPageState extends State<DetailPage> {
             textSize: 22,
             textSizewithPadding: 28,
           ),
-          Icon(
-            Icons.favorite_border,
-            size: 24.r,
+          IconButton(
+            constraints: BoxConstraints(maxHeight: 24.h, maxWidth: 24.h),
+            padding: EdgeInsets.zero,
+            icon: const Icon(Icons.favorite_border),
+            iconSize: 24.r,
+            onPressed: () => print("add to favorites..")
           ),
         ],
       ),
