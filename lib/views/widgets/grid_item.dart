@@ -11,8 +11,6 @@ import '../../model/pokemon.dart';
 import '../../model/pokemon_list_item.dart';
 import '../../utils/pokemon_api.dart';
 import '../../utils/pokemon_costants.dart';
-import '../../utils/pokemon_description_api.dart';
-import '../../../utils/pokemon_evolutions_api.dart';
 
 class GridItem extends StatefulWidget {
   final PokemonListItem pokemon;
@@ -39,10 +37,8 @@ class _GridItemState extends State<GridItem> {
   void fetchPokemonData() async {
     pokemon = await PokemonApi.getPokemonDetails(widget.pokemon.name);
     pokemonColor = listPokemonTypeColor[pokemon?.typesList[0].toLowerCase()];
-    pokemonDescription =
-        await PokemonDescriptionApi.getDescription(widget.pokemon.name);
-    evolutionData =
-        await PokemonEvolutionsApi.getEvolutions(widget.pokemon.name);
+    pokemonDescription = await PokemonApi.getDescription(widget.pokemon.name);
+    evolutionData = await PokemonApi.getEvolutions(widget.pokemon.name);
     setState(
       () => _isLoading = false,
     );

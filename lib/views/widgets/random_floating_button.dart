@@ -7,9 +7,7 @@ import '../../model/pokemon.dart';
 import '../../model/pokemon_details.dart';
 import '../../model/pokemon_list_item.dart';
 import '../../utils/palette.dart';
-import '../../utils/pokemon_description_api.dart';
 import '../../utils/pokemon_api.dart';
-import '../../utils/pokemon_evolutions_api.dart';
 import '../detail_page.dart';
 import 'styled_text.dart';
 import '../../utils/pokemon_costants.dart';
@@ -38,8 +36,8 @@ class _RandomFloatingButtonState extends State<RandomFloatingButton> {
     String pokeName = widget.pokemonList[index].name;
     pokemon = await PokemonApi.getPokemonDetails(pokeName);
     pokemonColor = listPokemonTypeColor[pokemon?.typesList[0].toLowerCase()];
-    pokemonDescription = await PokemonDescriptionApi.getDescription(pokeName);
-    evolutionData = await PokemonEvolutionsApi.getEvolutions(pokeName);
+    pokemonDescription = await PokemonApi.getDescription(pokeName);
+    evolutionData = await PokemonApi.getEvolutions(pokeName);
   }
 
   @override

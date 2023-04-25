@@ -159,9 +159,16 @@ class _DetailPageState extends State<DetailPage> {
           IconButton(
             constraints: BoxConstraints(maxHeight: 24.h, maxWidth: 24.h),
             padding: EdgeInsets.zero,
-            icon: const Icon(Icons.favorite_border),
+            icon: args.pokemon.favorite
+                ? const Icon(Icons.favorite)
+                : const Icon(Icons.favorite_border),
             iconSize: 24.r,
-            onPressed: () => print("add to favorites..")
+            onPressed: () => setState(() {
+              args.pokemon.favorite = !args.pokemon.favorite;
+              args.pokemon.favorite
+                  ? const Icon(Icons.favorite)
+                  : const Icon(Icons.favorite_border);
+            }),
           ),
         ],
       ),

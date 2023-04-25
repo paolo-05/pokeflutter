@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pokeflutter/views/detail_page.dart';
 
-import 'views/home_page.dart';
 import 'utils/theme.dart';
+import 'views/home_page.dart';
+import 'views/detail_page.dart';
+import 'views/favorite_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
           theme: pokeFlutterTheme,
           routes: {
             /// Dichiarazione della pagina di dettaglio del Pokemon
-            DetailPage.route: (context) => const DetailPage()
+            DetailPage.route: (context) => const DetailPage(),
+            FavoritePage.route: (context) => const FavoritePage()
           },
           home: const HomePage(),
         );

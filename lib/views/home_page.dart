@@ -13,6 +13,8 @@ import 'widgets/bottom_nav_bar.dart';
 import 'widgets/styled_text.dart';
 
 class HomePage extends StatefulWidget {
+  static const route = "/";
+
   const HomePage({super.key});
 
   @override
@@ -51,13 +53,14 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         children: [
           Container(
-              alignment: Alignment.centerLeft,
-              padding: EdgeInsets.only(top: 76.h, left: 24.w, right: 24.w),
-              child: StyledText(
-                text: "Pokédex",
-                style: textTheme.displaySmall!,
-                textHeight: 44.h,
-              )),
+            alignment: Alignment.centerLeft,
+            padding: EdgeInsets.only(top: 76.h, left: 24.w, right: 24.w),
+            child: StyledText(
+              text: "Pokédex",
+              style: textTheme.displaySmall!,
+              textHeight: 44.h,
+            ),
+          ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 24.w),
             child: Text(

@@ -10,6 +10,7 @@ class Pokemon {
   final List<String> abilitiesList;
   final List<int> statsList;
   final List<String> movesList;
+  bool favorite = false;
 
   Pokemon({
     required this.id,
@@ -23,6 +24,7 @@ class Pokemon {
     required this.abilitiesList,
     required this.statsList,
     required this.movesList,
+    required this.favorite,
   });
 
   Pokemon.fromJson(Map<String, dynamic> json)
@@ -37,7 +39,8 @@ class Pokemon {
         abilitiesList = getListAbilitiesFromJson(json["abilities"]),
         statsList = getListStatsFromJson(json["stats"]),
         movesList = getListMovesFromJson(json["moves"]),
-        speciesUrl = json["species"]["url"];
+        speciesUrl = json["species"]["url"],
+        favorite = false;
 }
 
 List<String> getListTypesFromJson(List<dynamic> json) {
