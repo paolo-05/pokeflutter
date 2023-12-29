@@ -1,20 +1,11 @@
-# pokeflutter
+# Pokeflutter
 
-A new Flutter project.
+> A flutter project for playoung around with the PokeAPI.
 
-## Getting Started
+## My first Flutter project
 
-This project is a starting point for a Flutter application.
+In my school, ITIS Galilei Crema, during the first part of the 2023, came a person working for [Sorint Lab](https://www.sorint.com/en/) that showed us how to get started with Flutter and the Dart language. The person only told us how to create the frontend part without any API fetching but, on my own, by searching up a bit I started to work with the [PokeAPI](https://pokeapi.co/) and I came up with a discrete work. 
 
-A few resources to get you started if this is your first Flutter project:
+## From the desing to the app
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-### Link per design
-
-[qua zio](https://www.figma.com/file/9Gm6Q8GPKa4LPAnFBfKueq/HackersGen-'22---Pokedex-App-Course---UI?node-id=28%3A1633&t=gh80Q2eocUIA3DBo-1)
+The person from Sorint also showed us the prototype of the app made in [Figma](https://www.figma.com/file/9Gm6Q8GPKa4LPAnFBfKueq/HackersGen-'22---Pokedex-App-Course---UI?node-id=28%3A1633&t=gh80Q2eocUIA3DBo-1) and by following that we were able to make the app working and also pretty.
